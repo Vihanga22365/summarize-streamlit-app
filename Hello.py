@@ -17,6 +17,7 @@ st.markdown("""
     [data-testid="collapsedControl"] {
         display: none
     }
+    
 </style>
 """, unsafe_allow_html=True)
 
@@ -31,6 +32,12 @@ with col1:
 # Second column for buttons
 with col2:
     st.write("")  # This is just to add some space at the top
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
+    st.write("")
     summary_btn = st.button("Summary", key="summary_btn")
     classify_btn = st.button("Classify", key="classify_btn")
 
@@ -42,7 +49,7 @@ def summarize(text):
 
 def classify(text):
     # Your classification logic goes here
-    return "Classification result"
+    return "Classified result"
 
 # Third column for the result text area
 with col3:
@@ -50,12 +57,12 @@ with col3:
     if summary_btn:
       with st.spinner('Summarizing Text...'):
         summary_result = summarize(user_input)
-        st.text_area("Result", value=summary_result, height=300, key='result')
+        st.text_area("Summarized Output", value=summary_result, height=300, key='result')
 
     elif classify_btn:
       with st.spinner('Classifying Text...'):
         classification_result = classify(user_input)
-        st.text_area("Result", value=classification_result, height=300, key='result')
+        st.text_area("Classified Output", value=classification_result, height=300, key='result')
 
     else:
       st.text_area("Result", height=300, key='result')

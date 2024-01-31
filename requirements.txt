@@ -3,3 +3,7 @@ numpy
 pandas
 pydeck
 streamlit
+# streamlit-extras
+python-dotenv
+# langchain
+openai
