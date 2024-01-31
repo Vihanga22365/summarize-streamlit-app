@@ -1,10 +1,11 @@
 import streamlit as st
+import time
 
 # Set the page to wide mode
-st.set_page_config(layout="wide", initial_sidebar_state="collapsed")
+st.set_page_config(page_title="Research Application" ,layout="wide", initial_sidebar_state="collapsed")
 
 # Title for your app
-st.title('Text Processing App')
+st.title('Research Application')
 
 st.markdown("""
 <style>
@@ -19,6 +20,7 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
+
 # Creating columns for the layout
 col1, col2, col3 = st.columns([3, 1, 3])
 
@@ -32,9 +34,6 @@ with col2:
     summary_btn = st.button("Summary", key="summary_btn")
     classify_btn = st.button("Classify", key="classify_btn")
 
-# Third column for the result text area
-with col3:
-    result = st.text_area("Result", height=300)
 
 # Functions for summary and classification - Replace with your own functions
 def summarize(text):
@@ -45,12 +44,21 @@ def classify(text):
     # Your classification logic goes here
     return "Classification result"
 
-# When the 'Summary' button is pressed
-if summary_btn:
-    summary_result = summarize(user_input)
-    result.text_area("Result", value=summary_result, height=300, key='result')
+# Third column for the result text area
+with col3:
 
-# When the 'Classify' button is pressed
-if classify_btn:
-    classification_result = classify(user_input)
-    result.text_area("Result", value=classification_result, height=300, key='result')
+    if summary_btn:
+      with st.spinner('Summarizing...'):
+        time.sleep(5)
+        summary_result = summarize(user_input)
+        st.text_area("Result", value=summary_result, height=300, key='result')
+
+    elif classify_btn:
+      with st.spinner('Classifying...'):
+        time.sleep(5)
+        classification_result = classify(user_input)
+        st.text_area("Result", value=classification_result, height=300, key='result')
+
+    else:
+      st.text_area("Result", height=300, key='result')
+      
