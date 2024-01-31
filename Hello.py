@@ -48,14 +48,12 @@ def classify(text):
 with col3:
 
     if summary_btn:
-      with st.spinner('Summarizing...'):
-        time.sleep(5)
+      with st.spinner('Summarizing Text...'):
         summary_result = summarize(user_input)
         st.text_area("Result", value=summary_result, height=300, key='result')
 
     elif classify_btn:
-      with st.spinner('Classifying...'):
-        time.sleep(5)
+      with st.spinner('Classifying Text...'):
         classification_result = classify(user_input)
         st.text_area("Result", value=classification_result, height=300, key='result')
 
